@@ -1,0 +1,16 @@
+<div *ngIf="showCart" style="text-align:center">
+  <h1>
+    Here is a list of products in the cart (task 1.7): 
+  </h1>
+<ul>
+  <li *ngFor='let product of cartItems'>
+    <ul>
+  <li>{{product.name}}</li>
+  <li>{{product.description}}</li>
+  <li>{{product.price}}</li>
+  <li>{{product.category}}</li>
+  <li>{{product.isAvailable}}</li>
+    </ul>
+  </li>
+</ul>
+</div>
