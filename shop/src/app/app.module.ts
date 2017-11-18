@@ -3,23 +3,21 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-import { ProductComponent } from './product/product.component';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductService } from './product/shared/services/product.service';
-import { CartComponent } from './cart/cart.component';
-import { CartService } from "./cart/shared/services/cart.service";
-
+import { ProductModule } from './product/product.module';
+import { CartListModule } from './cart-list/cart-list.module';
+import { CartItemModule } from './cart-item/cart-item.module';
+import { ProductListModule } from './product-list/product-list.module';
 @NgModule({
   declarations: [
-    AppComponent,
-    ProductComponent,
-    ProductListComponent,
-    CartComponent
+    AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    ProductModule,
+    CartListModule,
+    CartItemModule,
+    ProductListModule
   ],
-  providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

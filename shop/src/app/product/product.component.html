@@ -1,23 +1,10 @@
-<div style="text-align:center">
-  <h1>
-    Here is a custom properties for Product Component (task 1.3-1.4): 
-  </h1>
-<ul>
-  <li>{{name}}</li>
-  <li>{{description}}</li>
-  <li>{{price}}</li>
-  <li>{{category}}</li>
-  <li>{{isAvailable}}</li>
+<ul (click)='onProductClick()'>
+    <li>{{item.name}}</li>
+    <li>{{item.description}}</li>
+    <li>{{item.price}}</li>
+    <li>{{item.category}}</li>
+    <li>{{item.isAvailable}}</li>
+    <li>There are {{item.availableCount}} left</li>
+    <button [disabled]="!item.isAvailable" [ngStyle]="{'background-color': item.isAvailable ? 'green':'white'}" (click)="productBuy.emit(item)">Buy Item</button>
 </ul>
-<ul>
-  <li *ngFor='let ingredient of ingredients'>
-    {{ingredient}}
-  </li>
-</ul>
-<ul>
-  <li *ngFor='let equivalent of equivalents'>
-    {{equivalent}}
-  </li>
-</ul>
- </div>
-
+<br/>

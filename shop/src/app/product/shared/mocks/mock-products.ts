@@ -1,8 +1,9 @@
 import { Product } from '../models/product.model';
 import { Category } from '../enums/category.enum';
+import { ProductInterface } from "../interfaces/product.interface";
 
 export const PRODUCTS: Product[] = [
-  {name: 'Equivalent1', description: 'Great equivalent', price: 100, category: Category.Equivalents, isAvailable: true},
-  {name: 'Equivalent2', description: 'Great equivalent', price: 200, category: Category.Equivalents, isAvailable: true},
-  {name: 'Equivalent3', description: 'Great equivalent', price: 300, category: Category.Equivalents, isAvailable: true},
+  new Product(1, 'Equivalent1', 100, true, 10, Category.Equivalents),
+  new Product(2, 'Equivalent2', 200, true, 5, Category.Equivalents, 'Great equivalent'),
+  new Product(3, 'Equivalent3', 300, true, 1, Category.Equivalents, 'Great equivalent')
 ];

@@ -1,0 +1,12 @@
+<div *ngIf="showCart" style="text-align:center">
+  <h1>
+    Cart
+  </h1>
+<ul>
+  <li *ngFor='let cartItem of cartItems'>
+      <app-cart-item app-background [cartItem]='cartItem' (productRemove)='onProductRemove($event)'></app-cart-item>
+  </li>
+</ul>
+  <button (click)="increaseDiscount(10)">Add discount to first child</button>
+  <div>Total sum: {{sum}}</div>
+</div>

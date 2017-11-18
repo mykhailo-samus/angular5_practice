@@ -1,18 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Here is a list of products (task 1.6): 
+  <h1 #title>
   </h1>
 <ul>
   <li *ngFor='let product of products'>
-    <ul>
-  <li>{{product.name}}</li>
-  <li>{{product.description}}</li>
-  <li>{{product.price}}</li>
-  <li>{{product.category}}</li>
-  <li>{{product.isAvailable}}</li>
-    <button (click)="onProductBuy(product)">Buy Item (Task 1.8)</button>
-    </ul>
+    <app-product [item] ='product' (productBuy) = 'onProductBuy($event)'></app-product>
   </li>
 </ul>
  </div>

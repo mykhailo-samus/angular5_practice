@@ -1,0 +1,10 @@
+<ul app-background>
+  <li>name: {{cartItem.product.name}}</li>
+  <li>description: {{cartItem.product.description}}</li>
+  <li>price: {{cartItem.product.price}}</li>
+  <li>category: {{cartItem.product.category}}</li>
+  <li>available: {{cartItem.product.isAvailable}}</li>
+  <li>quantity: {{cartItem.quantity}}</li>
+  <li>discount is {{discount}} (@ViewChild Example)</li>
+  <button (click)="productRemove.emit(cartItem.product.id)">Remove All</button>
+</ul>
