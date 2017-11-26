@@ -7,31 +7,34 @@ import { CartItem } from "../cart-list.model";
 @Injectable()
 export class CartService {
   cart: CartItem[] = [];
+  cartChange: Subject<CartItem[]> = new Subject<CartItem[]>();
+  productCountAdjust: Subject<CartItem> = new Subject<CartItem>();
 
   addToCart(product: Product) {
-    var item = this.cart.find(x => x.product.id == product.id);
-    if (item == null) 
-      this.cart.push(new CartItem (product, 1)); 
-    else 
+    let item = this.cart.find(x => x.product.id === product.id);
+    if (item === null) {
+      this.cart.push(new CartItem(product, 1));
+    } else {
       item.quantity = item.quantity + 1;
+    }
 
-      this.cartChange.next(this.cart);
+    this.cartChange.next(this.cart);
   }
 
   removeFromCart(id: number) {
-    const index = this.cart.findIndex(x => x.product.id == id);
+    const index = this.cart.findIndex(x => x.product.id === id);
 
     if (index !== -1) {
-        var item = this.cart.find(x => x.product.id == id);
-        this.productCountAdjust.next(item);
+      let item = this.cart.find(x => x.product.id === id);
+      this.productCountAdjust.next(item);
 
-        this.cart.splice(index, 1);
-        this.cartChange.next(this.cart);
+      this.cart.splice(index, 1);
+      this.cartChange.next(this.cart);
     }
   }
 
   getCartSum(): number {
-    var sum = 0;
+    let sum = 0;
     this.cart.forEach((item) => {
       sum += item.product.price * item.quantity;
     });
@@ -39,17 +42,14 @@ export class CartService {
   }
 
   getItemsQuantity(): number {
-    var itemsCount = 0;
+    let itemsCount = 0;
     this.cart.forEach((item) => {
       itemsCount += item.quantity;
     });
     return itemsCount;
   }
 
-  getCart(){
+  getCart(): CartItem[] {
     return this.cart;
   }
-
-   cartChange: Subject<CartItem[]> = new Subject<CartItem[]>();
-   productCountAdjust: Subject<CartItem> = new Subject<CartItem>();
 }
