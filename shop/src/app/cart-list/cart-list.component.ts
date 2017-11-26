@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { CartService } from '../cart-list/shared/services/cart.service';
 import { Product } from '../product/shared/models/product.model';
@@ -10,7 +10,7 @@ import { CartItemComponent } from "../cart-item/cart-item.component";
   templateUrl: './cart-list.component.html',
   styleUrls: ['./cart-list.component.css']
 })
-export class CartListComponent implements OnInit {
+export class CartListComponent implements OnInit, OnDestroy {
   private subscription: any;
   cartItems: CartItem[];
   showCart: boolean;
