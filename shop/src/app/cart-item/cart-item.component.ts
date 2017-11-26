@@ -18,6 +18,7 @@ export class CartItemComponent implements OnInit {
   constructor() {
      this.discount = 0;
    }
+   
   ngOnInit() {
   }
 

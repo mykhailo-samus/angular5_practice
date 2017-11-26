@@ -16,10 +16,11 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.subscription = this.cartService.productCountAdjust.subscribe((item) => {
-      if (this.item.id == item.product.id) {
+      if (this.item.id === item.product.id) {
         this.item.availableCount += item.quantity;
-        if (this.item.availableCount > 0)
+        if (this.item.availableCount > 0) {
           this.item.isAvailable = true;
+        }
       }
     });
   }

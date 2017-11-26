@@ -33,7 +33,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       product.availableCount = product.availableCount - 1;
     }
 
-    if (product.availableCount == 0) 
+    if (product.availableCount === 0) {
       product.isAvailable = false;
+    }
   }
 }
