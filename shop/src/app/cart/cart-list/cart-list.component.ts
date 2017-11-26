@@ -14,6 +14,7 @@ export class CartListComponent implements OnInit, OnDestroy {
   cartItems: CartItem[];
   showCart: boolean;
   sum: number;
+  quantity: number;
 
   @ViewChild(CartItemComponent)
   private cartItemComponent: CartItemComponent;
@@ -24,7 +25,11 @@ export class CartListComponent implements OnInit, OnDestroy {
     this.cartService.removeFromCart(id);
   }
 
-  increaseDiscount(bonus: number) {
+  onCartClear() {
+    this.cartService.clearCart();
+  }
+
+  onIncreaseDiscount(bonus: number) {
     this.cartItemComponent.addDiscount(bonus);
   }
 
@@ -36,6 +41,7 @@ export class CartListComponent implements OnInit, OnDestroy {
       this.cartItems = value;
       this.showCart = this.cartItems.length > 0;
       this.sum = this.cartService.getCartSum();
+      this.quantity = this.cartService.getItemsQuantity();
     });
   }
 

@@ -7,6 +7,8 @@
       <app-cart-item app-background [cartItem]='cartItem' (productRemove)='onProductRemove($event)'></app-cart-item>
   </li>
 </ul>
-  <button (click)="increaseDiscount(10)">Add discount to first child</button>
+  <button (click)="onIncreaseDiscount(10)">Add discount to first child</button>
+  <button (click)="onCartClear()">Clear Cart</button>
   <div>Total sum: {{sum}}</div>
+  <div>Total quantity: {{quantity}}</div>
 </div>

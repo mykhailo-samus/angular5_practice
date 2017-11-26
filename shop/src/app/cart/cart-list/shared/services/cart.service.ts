@@ -9,6 +9,8 @@ export class CartService {
   cart: CartItem[] = [];
   cartChange: Subject<CartItem[]> = new Subject<CartItem[]>();
   productCountAdjust: Subject<CartItem> = new Subject<CartItem>();
+  sum: number;
+  itemsQuantity: number;
 
   addToCart(product: Product) {
     let item = this.cart.find(x => x.product.id === product.id);
@@ -16,6 +18,17 @@ export class CartService {
       this.cart.push(new CartItem(product, 1));
     } else {
       item.quantity = item.quantity + 1;
+    }
+
+    this.cartChange.next(this.cart);
+  }
+
+  addMultipleToCart(product: Product, quantity: number) {
+    let item = this.cart.find(x => x.product.id === product.id);
+    if (item === null || typeof item === 'undefined') {
+      this.cart.push(new CartItem(product, quantity));
+    } else {
+      item.quantity = item.quantity + quantity;
     }
 
     this.cartChange.next(this.cart);
@@ -33,20 +46,40 @@ export class CartService {
     }
   }
 
-  getCartSum(): number {
+  clearCart() {
+    while (this.cart.length > 0) {
+      let item = this.cart.pop();
+      this.productCountAdjust.next(item);
+    }
+    this.cartChange.next(this.cart);
+  }
+
+
+  recalculateCartSum() {
     let sum = 0;
     this.cart.forEach((item) => {
       sum += item.product.price * item.quantity;
     });
-    return sum;
+    this.sum = sum;
+  }
+
+  getCartSum(): number {
+    this.recalculateCartSum();
+    return this.sum;
+  }
+
+  recalculateItemsQuantity() {
+    let itemsQuantity = 0;
+    this.cart.forEach((item) => {
+      itemsQuantity += item.quantity;
+    });
+
+    this.itemsQuantity = itemsQuantity;
   }
 
   getItemsQuantity(): number {
-    let itemsCount = 0;
-    this.cart.forEach((item) => {
-      itemsCount += item.quantity;
-    });
-    return itemsCount;
+    this.recalculateItemsQuantity();
+    return this.itemsQuantity;
   }
 
   getCart(): CartItem[] {
