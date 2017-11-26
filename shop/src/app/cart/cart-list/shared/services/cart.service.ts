@@ -4,7 +4,7 @@ import { Subject } from "rxjs/Subject";
 import { CartItem } from "../cart-list.model";
 import { Product } from "../../../../product/product/shared/models/product.model";
 
-@Injectable()
+
 export class CartService {
   cart: CartItem[] = [];
   cartChange: Subject<CartItem[]> = new Subject<CartItem[]>();
