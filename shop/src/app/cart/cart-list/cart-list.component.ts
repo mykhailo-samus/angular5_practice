@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { CartService } from '../cart-list/shared/services/cart.service';
-import { Product } from '../product/shared/models/product.model';
 import { CartItem } from "./shared/cart-list.model";
 import { CartItemComponent } from "../cart-item/cart-item.component";
 

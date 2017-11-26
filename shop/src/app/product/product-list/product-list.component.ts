@@ -1,9 +1,9 @@
 import { Component, OnInit, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 import { ProductService } from '../product/shared/services/product.service';
-import { CartService } from '../cart-list/shared/services/cart.service';
 import { Product } from '../product/shared/models/product.model';
 import { ProductComponent } from "../product/product.component";
+import { CartService } from "../../cart/cart-list/shared/services/cart.service";
 
 @Component({
   selector: 'app-product-list',

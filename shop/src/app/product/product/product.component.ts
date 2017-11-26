@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angu
 
 import { Product } from './shared/models/product.model';
 import { Category } from './shared/enums/category.enum';
-import { CartService } from "../cart-list/shared/services/cart.service";
+import { CartService } from "../../cart/cart-list/shared/services/cart.service";
 
 @Component({
   selector: 'app-product',

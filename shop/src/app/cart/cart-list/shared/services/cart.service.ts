@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Product } from "../../../product/shared/models/product.model";
 import { Subject } from "rxjs/Subject";
 import { CartItem } from "../cart-list.model";
+import { Product } from "../../../../product/product/shared/models/product.model";
 
 @Injectable()
 export class CartService {
@@ -12,7 +12,7 @@ export class CartService {
 
   addToCart(product: Product) {
     let item = this.cart.find(x => x.product.id === product.id);
-    if (item === null) {
+    if (item === null || typeof item === 'undefined') {
       this.cart.push(new CartItem(product, 1));
     } else {
       item.quantity = item.quantity + 1;
