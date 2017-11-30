@@ -2,8 +2,18 @@
 <div style="text-align:center">
   <h1 #title>
   </h1>
+      <div>
+        <button  (click)="orderByProperty('name')"> Sort By Name</button>
+        <button  (click)="orderByProperty('price')"> Sort By Price</button>
+
+        <p>Current order type is: 
+          <span *ngIf="sortByAscending"> Ascending</span>
+          <span *ngIf="!sortByAscending"> Descending</span>
+        </p>
+    </div>
+
   <ul>
-    <li *ngFor='let product of products'>
+    <li *ngFor='let product of products | orderBy:sortByProperty:sortByAscending'>
       <app-product [item]='product' (productBuy)='onProductBuy($event)'></app-product>
     </li>
   </ul>

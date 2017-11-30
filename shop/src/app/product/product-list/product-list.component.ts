@@ -30,6 +30,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     @Inject(GeneratorService) private generatorService,
     @Inject(LocalStorageService) private localStorageService,
     @Optional() private configOptionsService: ConfigOptionsService) { }
+    sortByProperty: string;
+    sortByAscending: boolean;
 
   ngOnInit() {
     this.products = this._productService.getProducts();
@@ -42,6 +44,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       this.configOptionsService.Save(new Config(1, 'test_login', 'my_email@gmail.com'));
       this.config = this.configOptionsService.GetConfig();
     }
+
+    this.sortByProperty = 'name';
+    this.sortByAscending = true;
   }
 
   ngAfterViewInit() {
@@ -58,4 +63,9 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       product.isAvailable = false;
     }
   }
+  
+    orderByProperty(property: string): void {
+        this.sortByAscending = !this.sortByAscending;
+        this.sortByProperty = property;
+    }
 }

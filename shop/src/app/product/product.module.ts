@@ -12,6 +12,7 @@ import { generatorServiceFactory } from "../shared/providers/generator.service.p
 import { ConfigOptionsService } from "../shared/services/config.service";
 import { LocalStorageService } from "../shared/services/local-storage.service";
 import { СoloringDirective } from "../shared/directives/coloring-change.directive";
+import { OrderByPipe } from "../cart/cart-item/shared/pipes/order-by.pipe";
 
 let generatorLength = 5;
 
@@ -20,7 +21,8 @@ let generatorLength = 5;
   declarations: [
     ProductListComponent,
     ProductComponent,
-    СoloringDirective
+    СoloringDirective,
+    OrderByPipe,
   ],
   providers: [ProductService,
     CartService,

@@ -1,9 +1,10 @@
 <ul (click)='onProductClick()'>
     <li>{{item.name}}</li>
-    <li>{{item.description}}</li>
-    <li>{{item.price}}</li>
-    <li>{{item.category}}</li>
-    <li>{{item.isAvailable}}</li>
+    <li>Description: {{item.description}}</li>
+    <li>Price: {{item.price | currency:'UAH':'₴'}}</li>
+    <li>Category: {{item.category | uppercase }}</li>
+    <li>Is available: {{item.isAvailable}}</li>
+    <li>Last update: {{item.lastUpdateTime | date:'yyyy-MM-dd'}}</li>
     <li>There are {{item.availableCount}} left</li>
     <button [disabled]="!item.isAvailable" [ngStyle]="{'background-color': item.isAvailable ? 'green':'white'}" (click)="productBuy.emit(item)">Buy Item</button>
 </ul>

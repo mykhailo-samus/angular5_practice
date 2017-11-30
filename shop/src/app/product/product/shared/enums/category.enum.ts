@@ -1,4 +1,5 @@
 export enum Category {
-  Ingredients,
-  Equivalents
+  Watches,
+  Purifiers,
+  Notebooks
 }
