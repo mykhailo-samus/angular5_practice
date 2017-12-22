@@ -1,6 +1,3 @@
-1) применил встроенные пайпы на product.component.html:
-	- для форматирования цены - Price: {{item.price | currency:'UAH':'?'}}
-	- для форматирования даты обновления - Last update: {{item.lastUpdateTime | date:'yyyy-MM-dd'}}
-	- для форматирования категории в верхний регистр - Category: {{item.category | uppercase }}
-2) применил пользовательский пайп на product-list.component.html:
-	- let product of products | orderBy:sortByProperty:sortByAscending
+1) Состояние продуктов сохраняется в Local Storage.
+2) Администратор имеет возможность добавлять и редактировать (по айди) продукты.
+3) Доступ к Админ-панели имеют только авторизованные пользователи.

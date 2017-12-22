@@ -1,5 +1,9 @@
 <ul (click)='onProductClick()'>
-    <li>{{item.name}}</li>
+    <li>{{item.name}}
+        <a routerLink="details/{{item.id}}">
+            <span>See Details</span>
+        </a>
+    </li>
     <li>Description: {{item.description}}</li>
     <li>Price: {{item.price | currency:'UAH':'₴'}}</li>
     <li>Category: {{item.category | uppercase }}</li>

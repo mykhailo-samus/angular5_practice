@@ -1,0 +1,12 @@
+<ul>
+  Detailed product view:
+  <li>Id: {{product.id}}</li>
+  <li>Name: {{product.name}}</li>
+  <li>Description: {{product.description}}</li>
+  <li>Price: {{product.price | currency:'UAH':'₴'}}</li>
+  <li>Category: {{product.category | uppercase }}</li>
+  <li>Is available: {{product.isAvailable}}</li>
+  <li>Last update: {{product.lastUpdateTime | date:'yyyy-MM-dd'}}</li>
+  <li>There are {{product.availableCount}} left</li>
+</ul>
+<button (click)="goBack()">Go Back</button>

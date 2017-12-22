@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 
 import { CartService } from '../cart-list/shared/services/cart.service';
-import { CartItem } from "./shared/cart-list.model";
-import { CartItemComponent } from "../cart-item/cart-item.component";
+import { CartItem } from './shared/cart-list.model';
+import { CartItemComponent } from '../cart-item/cart-item.component';
 
 @Component({
   selector: 'app-cart-list',
@@ -36,6 +36,8 @@ export class CartListComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.cartItems = this.cartService.getCart();
     this.showCart = this.cartItems.length > 0;
+    this.sum = this.cartService.getCartSum();
+    this.quantity = this.cartService.getItemsQuantity();
 
     this.subscription = this.cartService.cartChange.subscribe((value) => {
       this.cartItems = value;

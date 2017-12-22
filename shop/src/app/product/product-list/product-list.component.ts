@@ -2,13 +2,13 @@ import { Component, OnInit, ViewChild, ElementRef, AfterViewInit, Inject, Option
 
 import { ProductService } from '../product/shared/services/product.service';
 import { Product } from '../product/shared/models/product.model';
-import { ProductComponent } from "../product/product.component";
-import { CartService } from "../../cart/cart-list/shared/services/cart.service";
-import { appInfoToken } from "../../shared/tokens/constants.token";
-import { GeneratorService } from "../../shared/services/generator.service";
-import { Config } from "../../shared/models/config.model";
-import { ConfigOptionsService } from "../../shared/services/config.service";
-import { LocalStorageService } from "../../shared/services/local-storage.service";
+import { ProductComponent } from '../product/product.component';
+import { CartService } from '../../cart/cart-list/shared/services/cart.service';
+import { appInfoToken } from '../../shared/tokens/constants.token';
+import { GeneratorService } from '../../shared/services/generator.service';
+import { Config } from '../../shared/models/config.model';
+import { ConfigOptionsService } from '../../shared/services/config.service';
+import { LocalStorageService } from '../../shared/services/local-storage.service';
 
 @Component({
   selector: 'app-product-list',
@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.title.nativeElement.textContent = 'List of products: (set from #title)';
+    this.title.nativeElement.textContent = 'List of products:';
   }
 
   onProductBuy(product) {
@@ -63,7 +63,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
       product.isAvailable = false;
     }
   }
-  
+
     orderByProperty(property: string): void {
         this.sortByAscending = !this.sortByAscending;
         this.sortByProperty = property;

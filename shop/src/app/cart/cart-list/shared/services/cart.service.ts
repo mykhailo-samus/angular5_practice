@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 
-import { Subject } from "rxjs/Subject";
-import { CartItem } from "../cart-list.model";
-import { Product } from "../../../../product/product/shared/models/product.model";
+import { Subject } from 'rxjs/Subject';
+import { CartItem } from '../cart-list.model';
+import { Product } from '../../../../product/product/shared/models/product.model';
 
 
 export class CartService {
@@ -13,7 +13,7 @@ export class CartService {
   itemsQuantity: number;
 
   addToCart(product: Product) {
-    let item = this.cart.find(x => x.product.id === product.id);
+    const item = this.cart.find(x => x.product.id === product.id);
     if (item === null || typeof item === 'undefined') {
       this.cart.push(new CartItem(product, 1));
     } else {
@@ -24,7 +24,7 @@ export class CartService {
   }
 
   addMultipleToCart(product: Product, quantity: number) {
-    let item = this.cart.find(x => x.product.id === product.id);
+    const item = this.cart.find(x => x.product.id === product.id);
     if (item === null || typeof item === 'undefined') {
       this.cart.push(new CartItem(product, quantity));
     } else {
@@ -38,7 +38,7 @@ export class CartService {
     const index = this.cart.findIndex(x => x.product.id === id);
 
     if (index !== -1) {
-      let item = this.cart.find(x => x.product.id === id);
+      const item = this.cart.find(x => x.product.id === id);
       this.productCountAdjust.next(item);
 
       this.cart.splice(index, 1);
@@ -48,7 +48,7 @@ export class CartService {
 
   clearCart() {
     while (this.cart.length > 0) {
-      let item = this.cart.pop();
+      const item = this.cart.pop();
       this.productCountAdjust.next(item);
     }
     this.cartChange.next(this.cart);

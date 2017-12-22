@@ -1,0 +1,19 @@
+<div>
+  <label>name:
+    <input [(ngModel)]="product.name" placeholder="name">
+  </label>
+  <label>description:
+    <input [(ngModel)]="product.description" placeholder="description">
+  </label>
+  <label>price:
+    <input [(ngModel)]="product.price" placeholder="price">
+  </label>
+  <label>is Available:
+    <input [(ngModel)]="product.isAvailable" placeholder="isAvailable">
+  </label>
+  <label>available Count:
+    <input [(ngModel)]="product.availableCount" placeholder="availableCount">
+  </label>
+  <button type="button" [disabled]="!isProductValid" (click)="save()">Save</button>
+  <button (click)="goBack()">Go Back</button>
+</div>

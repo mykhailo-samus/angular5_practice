@@ -1,0 +1,5 @@
+<a routerLink="/products/add">Add product</a>
+<a [routerLink]="['/products/edit/', product.id]">Edit product</a>
+<label>Id:
+  <input [(ngModel)]="product.id" placeholder="id">
+</label>

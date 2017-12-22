@@ -1,9 +1,11 @@
-<div style="text-align:center">
+<div style="text-align:center" routerLinkActive="active">
   <h1>
     {{title}}
   </h1>
-
-  <app-product-list>here</app-product-list>
-
-  <app-cart-list></app-cart-list>
- </div>
+  <a routerLink="/products">Products</a>
+  <a routerLink="/cart">Cart</a>
+  <li routerLinkActive="active">
+    <a routerLink="/admin">Admin</a>
+  </li>
+  <router-outlet></router-outlet>
+</div>
