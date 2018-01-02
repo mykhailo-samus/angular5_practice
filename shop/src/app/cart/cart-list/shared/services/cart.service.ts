@@ -12,23 +12,12 @@ export class CartService {
   sum: number;
   itemsQuantity: number;
 
-  addToCart(product: Product) {
-    const item = this.cart.find(x => x.product.id === product.id);
-    if (item === null || typeof item === 'undefined') {
-      this.cart.push(new CartItem(product, 1));
-    } else {
-      item.quantity = item.quantity + 1;
-    }
-
-    this.cartChange.next(this.cart);
-  }
-
-  addMultipleToCart(product: Product, quantity: number) {
+  addToCart(product: Product, quantity: number = 1) {
     const item = this.cart.find(x => x.product.id === product.id);
     if (item === null || typeof item === 'undefined') {
       this.cart.push(new CartItem(product, quantity));
     } else {
-      item.quantity = item.quantity + quantity;
+      item.quantity = item.quantity + 1;
     }
 
     this.cartChange.next(this.cart);
