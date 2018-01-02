@@ -1,0 +1,51 @@
+<form [formGroup]="userForm">
+    <div>
+        <label>First Name</label>
+        <input name="name" formControlName="firstName" type="text" placeholder="First Name (required)"/>
+        <div *ngIf="userForm.get('firstName').invalid && userForm.get('firstName').touched">
+            First Name is required (should be more than 3 symbols)!
+        </div>
+    </div>
+    <div>
+        <label>Last Name</label>
+        <input name="name" formControlName="lastName" type="text" placeholder="Last Name (required)"/>
+        <div *ngIf="userForm.get('lastName').invalid && userForm.get('lastName').touched">
+            Last Name is required (should be more than 3 symbols)!
+        </div>
+    </div>
+    <div>
+        <label>E-mail</label>
+        <input name="email" formControlName="email" type="email" placeholder="E-mail (required)"/>
+        <div  *ngIf="userForm.get('email').invalid && userForm.get('email').touched">
+            Please enter valid E-mail address (should be more than 3 symbols and in an E-mail format)!
+        </div>
+    </div>
+    <div formArrayName="phoneNumbers">
+        <div *ngFor="let phone of userForm.get('phoneNumbers').controls; let i = index">
+            <label>Phone Number {{i+1}}</label>
+            <input formControlName="{{i}}" placeholder="Phone Number (required)" />
+            <div *ngIf="phone.invalid && phone.touched">
+                Please enter valid Phone Number address (only digit numbers)!
+            </div>
+        </div>
+    </div>
+    <div>
+        <button (click)="addPhoneNumber()">Add Phone Number</button>
+        <button (click)="removePhoneNumber()" *ngIf="isPhonesExist">Remove Phone Number</button>
+    </div>
+    <label>
+        <input type="checkbox" formControlName="isAddressRequired" name="isAddressRequired" (change)="onChangeAddressRequired()">
+        I would like to recieve products by Delivery Service
+    </label>
+    <div *ngIf="userForm.get('isAddressRequired').value">
+        <label>Address</label>
+        <input name="address" formControlName="address" />
+        <div *ngIf="userForm.get('address').invalid && userForm.get('address').touched">
+            Please enter valid Address!
+        </div>
+    </div>
+    <div>
+        <button [disabled]="userForm.invalid" (click)="submit()">Submit Order</button>
+    </div>
+    <label>{{submittedText}}</label>
+</form>

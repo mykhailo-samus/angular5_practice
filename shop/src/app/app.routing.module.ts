@@ -12,6 +12,7 @@ import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { LoginComponent } from './authentication/login/login.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { ProcessOrderComponent } from './cart/process-order/process-order.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path: 'cart',
     component: CartListComponent
+  },
+  {
+    path: 'process-order',
+    component: ProcessOrderComponent
   },
   {
     path: '',
