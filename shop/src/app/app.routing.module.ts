@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ProductListComponent } from './product/product-list/product-list.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { ProductComponent } from './product/product/product.component';
 import { ProductDetailsComponent } from './product/product-details/product-details.component';
@@ -11,7 +10,8 @@ import { ManageProductsComponent } from './admin/manage-products/manage-products
 import { AdminDashboardComponent } from './admin/admin-dashboard/admin-dashboard.component';
 import { AdminComponent } from './admin/admin.component';
 import { AuthGuard } from './shared/guards/auth.guard';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './authentication/login/login.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {

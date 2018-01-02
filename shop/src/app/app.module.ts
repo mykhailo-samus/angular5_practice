@@ -7,13 +7,13 @@ import { ProductModule } from './product/product.module';
 import { CartModule } from './cart/cart.module';
 import { Router } from '@angular/router';
 import { AppRoutingModule } from './app.routing.module';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthService } from './shared/services/auth.service';
-import { LoginModule } from './login/login.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { TimingInterceptor } from './shared/services/interceptors.service';
+import { AuthenticationModule } from './authentication/authentication.module';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -27,7 +27,7 @@ import { TimingInterceptor } from './shared/services/interceptors.service';
     CartModule,
     AppRoutingModule,
     AdminModule,
-    LoginModule,
+    AuthenticationModule,
     HttpClientModule
   ],
   providers: [
