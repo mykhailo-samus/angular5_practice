@@ -10,7 +10,6 @@ export class ProductService {
   private productsStoreName = 'products';
 
   constructor(private store: LocalStorageService) {
-    debugger;
     const savedProducts = this.store.getItem(this.productsStoreName) as Product[];
     this.products = savedProducts ? savedProducts : PRODUCTS;
   }
@@ -29,7 +28,6 @@ export class ProductService {
   }
 
   add(item: Product): void {
-    debugger;
     const existingProduct = this.products.find(x => x.id === item.id);
     if (existingProduct) {
       Object.assign(existingProduct, item);

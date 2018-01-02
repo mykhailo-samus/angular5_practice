@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Config } from "../models/config.model";
+import { Config } from '../models/config.model';
 
 @Injectable()
 export class ConfigOptionsService {
     config: Config;
 
     Save(config: Config) {
-        this.config = config
+        this.config = config;
     }
 
     SaveFromFields(id: number, login: string, email: string) {

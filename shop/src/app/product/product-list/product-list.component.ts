@@ -9,12 +9,16 @@ import { GeneratorService } from '../../shared/services/generator.service';
 import { Config } from '../../shared/models/config.model';
 import { ConfigOptionsService } from '../../shared/services/config.service';
 import { LocalStorageService } from '../../shared/services/local-storage.service';
+import { ProductPromiseService } from '../product/shared/services/product-promise.service';
+import { ProductObservableService } from '../product/shared/services/product-observable.service';
+import { AutoUnsubscribe } from '../../shared/decorators/auto-unsubscribe.decorator';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css']
 })
+@AutoUnsubscribe()
 export class ProductListComponent implements OnInit, AfterViewInit {
   products: Product[];
   generatedSequence: string;
@@ -25,6 +29,7 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   private title: ElementRef;
 
   constructor(private _productService: ProductService,
+    private productObservableService: ProductObservableService,
     private cartService: CartService,
     @Inject(appInfoToken) public appInfo,
     @Inject(GeneratorService) private generatorService,
@@ -34,7 +39,13 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     sortByAscending: boolean;
 
   ngOnInit() {
-    this.products = this._productService.getProducts();
+    this.productObservableService.getProducts().subscribe(data => {
+      console.log(data);
+      this.products = data;
+    },
+    error => console.log(error),
+    () => console.log('completed'));
+
     this.generatedSequence = this.generatorService.randomSequence();
 
     this.localStorageService.setItem('myItem', 'ABC');

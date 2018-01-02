@@ -6,7 +6,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class OrderByPipe implements PipeTransform {
 
   transform(value: any[], property: string, isAscending: boolean = false): any {
-    if (!value || value.length == 0 || !property) {
+    if (!value || value.length === 0 || !property) {
       return;
     }
 

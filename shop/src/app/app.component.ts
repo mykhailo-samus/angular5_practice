@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -10,4 +11,5 @@ export class AppComponent {
     onBuy() {
     console.log('The product have been bought!');
   }
+
 }

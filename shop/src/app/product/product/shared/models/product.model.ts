@@ -2,7 +2,7 @@ import { Category } from '../enums/category.enum';
 import { ProductInterface } from '../interfaces/product.interface';
 
 export class Product implements ProductInterface {
-     readonly id: number;
+     id: number;
      readonly name: string;
      readonly description?: string;
      readonly lastUpdateTime;

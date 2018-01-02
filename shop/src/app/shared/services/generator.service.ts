@@ -10,9 +10,9 @@ export class GeneratorService {
     }
 
     randomSequence() {
-        var sequence = '';
-        for (var i = 0; i < this.length; i++) {
-            var position = Math.floor(Math.random() * this.charSet.length);
+        let sequence = '';
+        for (let i = 0; i < this.length; i++) {
+            const position = Math.floor(Math.random() * this.charSet.length);
             sequence += this.charSet.substring(position, position + 1);
         }
         return sequence;

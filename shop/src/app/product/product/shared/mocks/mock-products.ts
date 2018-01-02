@@ -1,6 +1,6 @@
 import { Product } from '../models/product.model';
 import { Category } from '../enums/category.enum';
-import { ProductInterface } from "../interfaces/product.interface";
+import { ProductInterface } from '../interfaces/product.interface';
 
 export const PRODUCTS: Product[] = [
   new Product(1, 'Smart Watches', 100, true, 10, new Date(2017, 10, 14), Category[Category.Watches]),

@@ -12,6 +12,9 @@ import { AdminModule } from './admin/admin.module';
 import { AuthGuard } from './shared/guards/auth.guard';
 import { AuthService } from './shared/services/auth.service';
 import { LoginModule } from './login/login.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { TimingInterceptor } from './shared/services/interceptors.service';
+
 
 @NgModule({
   declarations: [
@@ -24,9 +27,18 @@ import { LoginModule } from './login/login.module';
     CartModule,
     AppRoutingModule,
     AdminModule,
-    LoginModule
+    LoginModule,
+    HttpClientModule
   ],
-  providers: [AuthGuard, AuthService],
+  providers: [
+    AuthGuard,
+    AuthService,
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TimingInterceptor,
+    multi: true,
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
