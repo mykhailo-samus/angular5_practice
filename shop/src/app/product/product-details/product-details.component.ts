@@ -18,10 +18,8 @@ import { AutoUnsubscribe } from '../../shared/decorators/auto-unsubscribe.decora
 @AutoUnsubscribe()
 export class ProductDetailsComponent implements OnInit {
 
-  constructor(private productService: ProductService,
-    private productPromiseService: ProductPromiseService,
+  constructor(private productPromiseService: ProductPromiseService,
     private route: ActivatedRoute,
-    private http: HttpClient,
     private location: Location) { }
 
   private product: Product;
